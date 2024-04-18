@@ -92,7 +92,7 @@ window.addEventListener("load", () => {
   socket.on("transcript", (transcript) => {
     if (transcript !== "") {
       captions.innerHTML = transcript ? `<span>${transcript}</span>` : "";
-      fetchAudio(captions.innerHTML)
+      fetchAudio(transcript)
     }
   });
 });
