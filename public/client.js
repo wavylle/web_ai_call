@@ -64,6 +64,11 @@ async function fetchAudio(prompt) {
     // Fetching the audio data as an ArrayBuffer
     const arrayBuffer = await response.arrayBuffer();
 
+    // Parsing the response body as text to get GPT generated text
+    const gptText = await response.text();
+
+    console.log(gptText);
+
     // Creating a new Blob with the desired MIME type
     const audioBlob = new Blob([arrayBuffer], {
       type: "audio/webm;codecs=opus",
