@@ -162,14 +162,11 @@ app.get("/say-prompt", async (req, res) => {
         console.log(`ChatGPT TTFB: ${gptTTFB}ms, PlayHT TTFB: ${playHTTTFB}ms`);
         res.setHeader("X-PlayHT-TTFB", playHTTTFB);
         res.setHeader("X-ChatGPT-TTFB", chatGptTTFB);
+        res.setHeader("X-GPT-Response", completeGPTResponse);
       }
     });
     // Pipe response audio stream to browser
     stream.pipe(res);
-
-    // Send GPT generated text separately
-    res.write(completeGPTResponse);
-    res.end();
   } catch (error) {
     console.error("Error!!:", error);
     res.status(500).send("Internal Server Error");
