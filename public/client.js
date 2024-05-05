@@ -68,6 +68,7 @@ async function fetchAudio(prompt) {
     const gptText = response.headers.get('X-GPT-Response');
 
     console.log(gptText);
+    captions.innerHTML = gptText ? `<span>${gptText}</span>` : "";
 
     // Creating a new Blob with the desired MIME type
     const audioBlob = new Blob([arrayBuffer], {
