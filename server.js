@@ -166,6 +166,10 @@ app.get("/say-prompt", async (req, res) => {
     });
     // Pipe response audio stream to browser
     stream.pipe(res);
+
+    // Send GPT generated text separately
+    res.write(completeGPTResponse);
+    res.end();
   } catch (error) {
     console.error("Error!!:", error);
     res.status(500).send("Internal Server Error");
