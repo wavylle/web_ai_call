@@ -64,8 +64,8 @@ async function fetchAudio(prompt) {
     // Fetching the audio data as an ArrayBuffer
     const arrayBuffer = await response.arrayBuffer();
 
-    // Parsing the response body as text to get GPT generated text
-    const gptText = await response.text();
+    // Extracting GPT generated text from response headers
+    const gptText = response.headers.get('X-GPT-Response');
 
     console.log(gptText);
 
